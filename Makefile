@@ -12,4 +12,21 @@ $(directory):
 	source ./$(directory)/bin/activate; \
 	pip install -r requirements.txt; \
 
-.PHONY: force_setup
+test_all:
+	@echo
+	@echo
+	@echo "************************** Testing Table class *******************"
+	python -m unittest tests/test_Table.py
+
+	@echo
+	@echo
+	@echo "************************** Testing Robot class *******************"
+	python -m unittest tests/test_Robot.py
+
+run_default:
+	@echo
+	@echo "Running Robot with input.txt file"
+	@echo
+	@python run.py < input.txt
+
+.PHONY: force_setup, test_all
