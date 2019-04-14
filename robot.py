@@ -3,8 +3,11 @@
 Main module for defining toy robot
 
 """
-from table import Table
 import logging
+
+from table import Table
+from coordinate import Coordiates
+
 
 __author__ = "tanmay.datta86@gmail.com"
 logger = logging.getLogger(__name__)
@@ -20,22 +23,24 @@ class Robot:
         logger.debug("robot created table is {}".format(Table))
         self.table = table
         self.ready = False
-        self.direction = None
-        self.position = (None, None)
+        self.coordinates = Coordiates()
 
     def place(self, x_coord: int, y_coord: int, direction: str):
         if(self.table.is_valid_position(x_coord, y_coord) and
            direction in self.valid_directions):
             logger.debug("Valid position, placing robot")
-            self.position = (x_coord, y_coord)
-            self.direction = direction
             self.ready = True
+            self.coordinates.update(x_coord, y_coord, direction)
         else:
             logger.error("Not a valid position or direction on table.")
             pass
 
+    def position(self):
+        return (self.coordinates.x,
+                self.coordinates.y, self.coordinates.direction)
+
     def move(self):
-        pass
+        self.coordinates.move()
 
     def left(self):
         pass
@@ -47,6 +52,5 @@ class Robot:
         return str(self)
 
     def __str__(self) -> str:
-        return "Coordinate(x,y): {x}, {y}. Position {direction}".format(
-            x=self.position[0],
-            y=self.position[1], direction=self.direction)
+        status = str(self.coordinates)
+        return status

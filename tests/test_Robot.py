@@ -26,8 +26,7 @@ class RobotTest(unittest.TestCase):
 
     def test_robot_created_properly(self):
         self.assertFalse(self.robot.ready)
-        self.assertEqual(self.robot.direction, None)
-        self.assertEqual(self.robot.position, (None, None))
+        self.assertEqual(self.robot.position(), (None, None, None))
         self.assertEqual(self.robot.table, self.table)
 
     def test_robot_not_on_table(self):
@@ -38,8 +37,7 @@ class RobotTest(unittest.TestCase):
     def test_placing_robot_correctly(self, x_coord, y_coord, direction):
         self.robot.place(x_coord, y_coord, direction)
         self.assertEqual(self.robot.ready, True)
-        self.assertEqual(self.robot.direction, direction)
-        self.assertEqual(self.robot.position, (x_coord, y_coord))
+        self.assertEqual(self.robot.position(), (x_coord, y_coord, direction))
         logger.debug(self.robot.report())
 
     def test_discard_until_placing_robot(self):
