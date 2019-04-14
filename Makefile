@@ -27,6 +27,6 @@ run_default:
 	@echo
 	@echo "Running Robot with input.txt file"
 	@echo
-	@python run.py < input.txt
+	@python run.py
 
 .PHONY: force_setup, test_all

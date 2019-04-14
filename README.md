@@ -1,20 +1,38 @@
 # toy-robot
+
 Toy Robot Code Challenge
-* Written in Python-3
+
+* Written in Python3
+
+## Setup
+- Manual
+    - `virtualenv venv`
+    - source `venv\bin\activate`
+    - `pip install -r requirements.txt`
+    - All setup !!
+
+- Makefile
+    - `make venv`
+    - if venv exist and you want to reset
+        -- `make force_venv`
+
 ## Usage
-* Test
+* Run:
+    `python3 run.py` 
+* Help: 
+    - ? for available commands
+    - For particular command
+      `help command`
+
+* Console is "Case insensitive" place == PlAce == PLACE
+
+* Quit:
+    - press `q`
+    - press `Ctrl + c`
+ 
+
+** Any error --> Switch debuging level for logger.
+
+## Test
     `python3 -m unittest tests/test_Robot.py`
 
-* For running at console:
-
-    `python3 run.py` 
-
-* For running with a txt file 
-
-    `./run.py < commands.txt` 
-
-or 
-
-    `chmod a+x run.py` (Assumes \usr\bin\python3 exists)
-
-    ` run.py < commands.txt` 
