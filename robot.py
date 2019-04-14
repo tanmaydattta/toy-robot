@@ -25,7 +25,15 @@ class Robot:
         self.ready = False
         self.navigation_system = NavigationSystem()
 
+    def set_terrain(self, terrain: Terrain):
+        self.terrain = terrain
+
     def place(self, x_coord: int, y_coord: int, direction: str):
+        if self.terrain is None:
+            raise ValueError("""Unless robot knows the terrain,
+            placement is not possible. Please specify terrain by running
+            <robot>.set_terrain(<terrain>)""")
+
         if(self.terrain.coordinates_within_limits(x_coord, y_coord) and
            direction in self.valid_directions):
             logger.debug("Valid position, placing robot")
