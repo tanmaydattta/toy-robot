@@ -3,12 +3,13 @@
 Main module for testing Robot class
 
 """
+import logging
 import unittest
-from ddt import ddt, data, unpack
+
+from ddt import data, ddt, unpack
 
 from robot import Robot
 from table import Table
-import logging
 
 __author__ = "tanmay.datta86@gmail.com"
 logger = logging.getLogger(__name__)

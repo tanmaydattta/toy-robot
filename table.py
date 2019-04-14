@@ -13,8 +13,13 @@ class Terrain:
     """
     Terrain which is Universe. Everything is within limits :-)
     """
+    def __init__(self, x_pos, y_pos):
+        self.x_pos = x_pos
+        self.y_pos = y_pos
 
-    def coordinates_within_limits(self, x_pos: int, y_pos: int) -> bool:
+    def coordinates_within_limits(self, _x_pos: int, _y_pos: int) -> bool:
+        """ Test if coordinates fall under the given terrain
+        """
         True
 
 

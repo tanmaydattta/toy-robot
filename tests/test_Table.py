@@ -4,6 +4,7 @@ Main module for testing Table class
 
 """
 import unittest
+
 import ddt
 
 from table import Table

@@ -5,9 +5,8 @@ Main module for defining toy robot
 """
 import logging
 
-from table import Terrain
 from navigation import NavigationSystem
-
+from table import Terrain
 
 __author__ = "tanmay.datta86@gmail.com"
 logger = logging.getLogger(__name__)
@@ -26,9 +25,15 @@ class Robot:
         self.navigation_system = NavigationSystem()
 
     def set_terrain(self, terrain: Terrain):
+        """
+        sets terrain for your robot
+        """
         self.terrain = terrain
 
     def place(self, x_coord: int, y_coord: int, direction: str):
+        """
+        places robot in a given setting
+        """
         if self.terrain is None:
             raise ValueError("""Unless robot knows the terrain,
             placement is not possible. Please specify terrain by running
@@ -44,13 +49,18 @@ class Robot:
                                           self.terrain)
         else:
             logger.error("Not a valid position or direction on table.")
-            pass
 
     def position(self):
+        """
+        reports position of robot
+        """
         return (self.navigation_system.x,
                 self.navigation_system.y, self.navigation_system.direction)
 
     def report(self):
+        """
+        generic report function
+        """
         return str(self)
 
     def __str__(self) -> str:

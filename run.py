@@ -3,8 +3,8 @@
 Main module for driving the toy robot
 
 """
-from cmd import Cmd
 import logging.config
+from cmd import Cmd
 
 from robot import Robot
 from table import Table
@@ -15,6 +15,9 @@ logging.config.fileConfig('logging.config',
 
 
 class RobotPrompt(Cmd):
+    """
+    New shiny prompt for our robot
+    """
     intro = """Welcome to the toy robot shell.
     To quit you can just type q and enter or just press Ctrl+C
     Type help or ? to list commands.\n"""
@@ -47,7 +50,7 @@ class RobotPrompt(Cmd):
         print(line)
         self.robot.navigation_system.move()
 
-    def do_left(self, line):
+    def do_left(self, _line):
         """
         Moves robot to it's left direction
         ----->
@@ -80,13 +83,13 @@ class RobotPrompt(Cmd):
         print(self.robot.report())
 
     def precmd(self, line):
-            line = line.lower()
-            if line == "q":
-                print("quitting")
-                exit(0)
-            return line
+        line = line.lower()
+        if line == "q":
+            print("quitting")
+            exit(0)
+        return line
 
 
 if __name__ == "__main__":
-    prompt = RobotPrompt()
-    prompt.cmdloop()
+    PROMPT = RobotPrompt()
+    PROMPT.cmdloop()
