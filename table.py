@@ -9,7 +9,16 @@ __author__ = "tanmay.datta86@gmail.com"
 logger = logging.getLogger(__name__)
 
 
-class Table:
+class Terrain:
+    """
+    Terrain which is Universe. Everything is within limits :-)
+    """
+
+    def coordinates_within_limits(self, x_pos: int, y_pos: int) -> bool:
+        True
+
+
+class Table(Terrain):
     """
     Table on which robot will be placed
     """
@@ -22,7 +31,7 @@ class Table:
         self.length = length
         self.width = width
 
-    def is_valid_position(self, x_pos: int, y_pos: int) -> bool:
+    def coordinates_within_limits(self, x_pos: int, y_pos: int) -> bool:
         """
         Given x and y coordinates return if the location is on table
             :param self: insance

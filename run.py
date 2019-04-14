@@ -19,7 +19,7 @@ class RobotPrompt(Cmd):
     To quit you can just type q and enter or just press Ctrl+C
     Type help or ? to list commands.\n"""
     prompt = '(Toy robot) '
-    robot = Robot(Table(5,5))
+    robot = Robot(Table(5, 5))
 
     def do_place(self, place_cmd):
         """
@@ -45,7 +45,7 @@ class RobotPrompt(Cmd):
         (Given it is facing East)
         """
         print(line)
-        self.robot.move()
+        self.robot.navigation_system.move()
 
     def do_left(self, line):
         """
@@ -57,7 +57,7 @@ class RobotPrompt(Cmd):
         |
         |
         """
-        self.robot.left()
+        self.robot.navigation_system.left()
 
     def do_right(self, _line):
         """
@@ -69,7 +69,7 @@ class RobotPrompt(Cmd):
         |
         V
         """
-        self.robot.right()
+        self.robot.navigation_system.right()
 
     def do_report(self, _line):
         """

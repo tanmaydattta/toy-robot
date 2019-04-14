@@ -5,8 +5,8 @@ Main module for defining toy robot
 """
 import logging
 
-from table import Table
-from coordinate import Coordiates
+from table import Terrain
+from navigation import NavigationSystem
 
 
 __author__ = "tanmay.datta86@gmail.com"
@@ -19,49 +19,32 @@ class Robot:
     """
     valid_directions = ["NORTH", "EAST", "SOUTH", "WEST"]
 
-    def __init__(self, table: Table = None):
-        logger.debug("robot created table is {}".format(Table))
-        self.table = table
+    def __init__(self, terrain: Terrain = None):
+        logger.debug("robot created table is {}".format(terrain))
+        self.terrain = terrain
         self.ready = False
-        self.coordinates = Coordiates()
+        self.navigation_system = NavigationSystem()
 
     def place(self, x_coord: int, y_coord: int, direction: str):
-        if(self.table.is_valid_position(x_coord, y_coord) and
+        if(self.terrain.coordinates_within_limits(x_coord, y_coord) and
            direction in self.valid_directions):
             logger.debug("Valid position, placing robot")
             self.ready = True
-            self.coordinates.update(x_coord, y_coord, direction)
+            self.navigation_system.update(x_coord,
+                                          y_coord,
+                                          direction,
+                                          self.terrain)
         else:
             logger.error("Not a valid position or direction on table.")
             pass
 
     def position(self):
-        return (self.coordinates.x,
-                self.coordinates.y, self.coordinates.direction)
+        return (self.navigation_system.x,
+                self.navigation_system.y, self.navigation_system.direction)
 
-    def move(self):
-        (x, y, d) = self.position()
-        self.coordinates.move()
-        if self.table.is_valid_position(self.coordinates.x, self.coordinates.y):
-            pass
-        else:
-            self.coordinates.update(x, y, d)
-
-    def left(self):
-        direction_index = self.valid_directions.index(
-            self.coordinates.direction)
-        direction_index = (direction_index - 1) % 4
-        self.coordinates.direction = self.valid_directions[direction_index]
-
-    def right(self):
-        direction_index = self.valid_directions.index(
-            self.coordinates.direction)
-        direction_index = (direction_index + 1) % 4
-        self.coordinates.direction = self.valid_directions[direction_index]
-    
     def report(self):
         return str(self)
 
     def __str__(self) -> str:
-        status = str(self.coordinates)
+        status = str(self.navigation_system)
         return status
