@@ -40,13 +40,24 @@ class Robot:
                 self.coordinates.y, self.coordinates.direction)
 
     def move(self):
+        (x, y, d) = self.position()
         self.coordinates.move()
+        if self.table.is_valid_position(self.coordinates.x, self.coordinates.y):
+            pass
+        else:
+            self.coordinates.update(x, y, d)
 
     def left(self):
-        pass
+        direction_index = self.valid_directions.index(
+            self.coordinates.direction)
+        direction_index = (direction_index - 1) % 4
+        self.coordinates.direction = self.valid_directions[direction_index]
 
     def right(self):
-        pass
+        direction_index = self.valid_directions.index(
+            self.coordinates.direction)
+        direction_index = (direction_index + 1) % 4
+        self.coordinates.direction = self.valid_directions[direction_index]
     
     def report(self):
         return str(self)

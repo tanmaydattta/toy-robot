@@ -36,7 +36,7 @@ class RobotPrompt(Cmd):
         self.robot.place(x_coord, y_coord, direction)
         print("okay this works nicely {}".format(direction))
 
-    def do_move(self):
+    def do_move(self, line):
         """
         Moves the robot in the direction it is facing
         | x |  |
@@ -44,9 +44,10 @@ class RobotPrompt(Cmd):
         |   | x |
         (Given it is facing East)
         """
-        pass
+        print(line)
+        self.robot.move()
 
-    def do_left(self):
+    def do_left(self, line):
         """
         Moves robot to it's left direction
         ----->
@@ -56,7 +57,7 @@ class RobotPrompt(Cmd):
         |
         |
         """
-        pass
+        self.robot.left()
 
     def do_right(self, _line):
         """
@@ -68,7 +69,7 @@ class RobotPrompt(Cmd):
         |
         V
         """
-        pass
+        self.robot.right()
 
     def do_report(self, _line):
         """

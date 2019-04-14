@@ -25,6 +25,8 @@ class Coordiates:
             self.y -= 1
         if self.direction == "WEST":
             self.x -= 1
+        else: # here we should handle some exceptions if desired
+            pass
         return (self.x, self.y)
     
     def __str__(self) -> str:
