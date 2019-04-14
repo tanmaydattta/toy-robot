@@ -4,12 +4,9 @@ Main module for Table class
 
 """
 import logging
-from os import path
-import logging.config
 
 __author__ = "tanmay.datta86@gmail.com"
-logging.config.fileConfig('logging.config')
-logger = logging.getLogger('toy_robot')
+logger = logging.getLogger(__name__)
 
 
 class Table:
