@@ -8,8 +8,10 @@ from ddt import ddt, data, unpack
 
 from robot import Robot
 from table import Table
+import logging
 
 __author__ = "tanmay.datta86@gmail.com"
+logger = logging.getLogger(__name__)
 
 
 @ddt
@@ -31,11 +33,20 @@ class RobotTest(unittest.TestCase):
     def test_robot_not_on_table(self):
         pass
 
-    def test_placing_robot_correctly(self):
-        pass
+    @data((0, 0, "NORTH"), (1, 2, "EAST"), (3, 3, "NORTH"))
+    @unpack
+    def test_placing_robot_correctly(self, x_coord, y_coord, direction):
+        self.robot.place(x_coord, y_coord, direction)
+        self.assertEqual(self.robot.ready, True)
+        self.assertEqual(self.robot.direction, direction)
+        self.assertEqual(self.robot.position, (x_coord, y_coord))
+        logger.debug(self.robot.report())
 
     def test_discard_until_placing_robot(self):
-        pass
+        new_robot = Robot(self.table)
+        new_robot.move()
+        new_robot.move()
+        new_robot.left()
 
     def test_placing_robot_trying_to_fall_down(self):
         pass

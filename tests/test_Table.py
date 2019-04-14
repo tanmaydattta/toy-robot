@@ -12,7 +12,7 @@ __author__ = "tanmay.datta86@gmail.com"
 
 
 @ddt.ddt
-class TableTest(unittest.TestCase):
+class TableTests(unittest.TestCase):
 
     def setUp(self):
         self.default_table = Table(5, 5)
