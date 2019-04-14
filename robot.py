@@ -15,6 +15,9 @@ class Robot:
     The main robot class which does most of the action here
     """
 
-    def __init__(self):
-        logger.debug("robot created table is None")
-        self.table = None
+    def __init__(self, table=None):
+        logger.debug("robot created table is {}".format(Table))
+        self.table = table
+        self.ready = False
+        self.direction = None
+        self.position = (None, None)
