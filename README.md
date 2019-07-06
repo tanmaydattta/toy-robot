@@ -1,6 +1,10 @@
+
 # toy-robot
 
+
 Toy Robot Code Challenge
+# CI (Build status) by Travis
+https://travis-ci.com/tanmaydattta/toy-robot.svg?branch=master
 
 * Written in Python3
 
