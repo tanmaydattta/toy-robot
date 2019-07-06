@@ -4,7 +4,7 @@
 
 Toy Robot Code Challenge
 # CI (Build status) by Travis
-https://travis-ci.com/tanmaydattta/toy-robot.svg?branch=master
+[![Build Status](https://travis-ci.com/tanmaydattta/toy-robot.svg?branch=master)](https://travis-ci.com/tanmaydattta/toy-robot)
 
 * Written in Python3
 
