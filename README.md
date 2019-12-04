@@ -9,10 +9,16 @@ Which I wrote for some firm (Similar to biological name for the circular strucur
 Feel free to use the code abuse the code. (this code is an overkill anyways for the kind of work it is doing). 
 Suggestions to make it more over engineered are --> 
 Add more object orientation
+
 Decorators always impress people. 
+
 Try checking monads and implementing them to do something pretty useless somewhere. 
+
 Finally --> 
+
 Find a dot net (visual studio specially) devleoper and ask him/her how he will refactor the code. 
+
+
 
 ... happy coding
 
